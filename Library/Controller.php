@@ -10,11 +10,18 @@ abstract class Controller
         $path = VIEW_DIR . $tplDir . DS . $viewName . '.phtml';
 
         if (!file_exists($path)) {
-            die("{$path} not found");
+            throw new Exception("{$path} not found", 500);
         }
 
         ob_start();
         require $path;
+        return ob_get_clean();
+    }
+
+    public static function renderError($message, $code)
+    {
+        ob_start();
+        require VIEW_DIR . 'error.phtml';
         return ob_get_clean();
     }
 }
