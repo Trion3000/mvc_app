@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2016 г., 19:55
+-- Время создания: Май 26 2016 г., 19:54
 -- Версия сервера: 10.1.13-MariaDB
 -- Версия PHP: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- База данных: `mvc_app`
@@ -309,6 +303,27 @@ INSERT INTO `book_author` (`id`, `book_id`, `author_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `message` mediumtext NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `username`, `email`, `message`, `created`) VALUES
+(1, 'jessie', 'dmitriyhomnekov@gmail.com', 'sfsdfsdf sd', '2016-05-26 19:52:02');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `style`
 --
 
@@ -366,6 +381,12 @@ ALTER TABLE `book_author`
   ADD KEY `author_id` (`author_id`);
 
 --
+-- Индексы таблицы `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `style`
 --
 ALTER TABLE `style`
@@ -391,6 +412,11 @@ ALTER TABLE `book`
 ALTER TABLE `book_author`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
+-- AUTO_INCREMENT для таблицы `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT для таблицы `style`
 --
 ALTER TABLE `style`
@@ -411,7 +437,3 @@ ALTER TABLE `book`
 ALTER TABLE `book_author`
   ADD CONSTRAINT `book_author_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `book_author_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

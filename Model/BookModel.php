@@ -10,62 +10,37 @@ class BookModel
 {
     public function find($id)
     {
-        $books = array(
-            array(
-                'id' => 1,
-                'title' => 'Dracula',
-                'author' => 'Stoker',
-                'price' => 666
-            ),
+        $db = DbConnection::getInstance()->getPdo();
+        $sth = $db->prepare('SELECT * FROM book WHERE status = 1 AND id = :number');
+        $sth->execute(array(
+            'number' => $id
+        ));
 
-            array(
-                'id' => 2,
-                'title' => 'Dream catcher',
-                'author' => 'King',
-                'price' => 243
-            ),
+        $books = $sth->fetch(PDO::FETCH_ASSOC);
 
-            array(
-                'id' => 3,
-                'title' => 'Flowers for Eldzhernon',
-                'author' => 'Somepne',
-                'price' => 3423
-            ),
-        );
-
-        foreach ($books as $book) {
-            if ($book['id'] == $id) {
-                return $book;
-            }
+        if (!$books) {
+            throw new NotFoundException("Book #{$id} not found");
         }
 
-        throw new NotFoundException('Book not found');
+        return $books;
     }
 
 
     public function findAll()
     {
-        return array(
-            array(
-                'id' => 1,
-                'title' => 'Dracula',
-                'author' => 'Stoker',
-                'price' => 666
-            ),
+        $db = DbConnection::getInstance()->getPdo();
+        $sth = $db->query('SELECT * FROM book WHERE status = 1 ORDER BY price DESC ');
+        $books = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-            array(
-                'id' => 2,
-                'title' => 'Dream catcher',
-                'author' => 'King',
-                'price' => 243
-            ),
+        if (!$books) {
+            throw new NotFoundException('Books not found');
+        }
 
-            array(
-                'id' => 3,
-                'title' => 'Flowers for Eldzhernon',
-                'author' => 'Somepne',
-                'price' => 3423
-            ),
-        );
+        return $books;
+    }
+
+    public function count()
+    {
+        // select count(*) from books
     }
 }
