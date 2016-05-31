@@ -4,11 +4,13 @@
  */
 abstract class Config
 {
-    public static $elements = array();
+    private static $elements = array();
+
     public static function set($key, $value)
     {
         self::$elements[$key] = $value;
     }
+
     public static function get($key)
     {
         if (isset(self::$elements[$key])) {
@@ -16,12 +18,15 @@ abstract class Config
         }
         return null;
     }
+
     public static function setFromXML($file)
     {
         $xmlObject = simplexml_load_file(CONF_DIR . $file, 'SimpleXMLElement', LIBXML_NOWARNING);
+
         if (!$xmlObject) {
             return;
         }
+
         $newArray = array() ;
         $array = (array)$xmlObject ;
         foreach ($array as $key => $value)  {

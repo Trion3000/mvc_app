@@ -16,7 +16,6 @@ class IndexController extends Controller
 
     public function contactAction(Request $request)
     {
-        $flashMessage = $request->get('flash'); // $_GET['flash']
         $form = new ContactForm($request);
 
         if ($request->isPost()) {
@@ -24,24 +23,25 @@ class IndexController extends Controller
                 $feedbackModel = new FeedBackModel();
                 $datetime = (new DateTime())->format('Y-m-d H:i:s');
 
+                // mail()
+
                 $feedbackModel->save(array(
                     'username' => $form->username,
                     'email' => $form->email,
                     'message' => $form->message,
                     'created' => $datetime
                 ));
-                $flashMessage = 'Success';
+                Session::setFlash('Success');
 
                 // todo: function redirect($to)
-                Router::redirect('/index.php?route=index/contact&flash=' . $flashMessage);
+                Router::redirect('/index.php?route=index/contact');
             }
 
-            $flashMessage = 'Error';
+            Session::setFlash('Error');
         }
 
         $args = array(
-            'form' => $form,
-            'flashMessage' => $flashMessage
+            'form' => $form
         );
         return $this->render('contact', $args);
     }

@@ -19,6 +19,7 @@ abstract class Session
         if (self::has($key)) {
             return $_SESSION[$key];
         }
+
         return null;
     }
     /**
@@ -36,6 +37,7 @@ abstract class Session
     {
         unset($_SESSION[$key]);
     }
+
     /**
      * destroy
      */
@@ -43,14 +45,17 @@ abstract class Session
     {
         session_destroy();
     }
+
     public static function start()
     {
         session_start();
     }
+
     public static function setFlash($message)
     {
         self::set('flash', $message);
     }
+
     public static function getFlash()
     {
         $message = self::get('flash');

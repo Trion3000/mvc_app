@@ -25,8 +25,9 @@ function __autoload($className)
 
 
 try {
+    Session::start();
     Config::setFromXML('db.xml');
-
+    Config::setFromXML('main.xml');
 
     $request = new Request();
     $route = $request->get('route'); // $_GET['route']

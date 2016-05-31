@@ -13,14 +13,15 @@ class DbConnection
 
     private function __construct()
     {
-        $dsn = 'mysql: host=' . Config::get('host') . '; dbname='. Config::get('dbname'); // like:  mysql: host=localhost; dbnam=mvc1102
+        // like:  mysql: host=localhost; dbname=mvc1102
+        $dsn = 'mysql: host=' . Config::get('host') . '; dbname='. Config::get('dbname');
+
         $this->pdo = new PDO($dsn, Config::get('user'), Config::get('pass'));
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     }
 
     private function __clone(){}
-    private function __wakeUp(){}
+    private function __wakeup(){}
 
     public static function getInstance()
     {

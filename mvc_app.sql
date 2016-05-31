@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 26 2016 г., 19:54
+-- Время создания: Май 31 2016 г., 19:56
 -- Версия сервера: 10.1.13-MariaDB
 -- Версия PHP: 5.6.20
 
@@ -319,7 +319,9 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `username`, `email`, `message`, `created`) VALUES
-(1, 'jessie', 'dmitriyhomnekov@gmail.com', 'sfsdfsdf sd', '2016-05-26 19:52:02');
+(1, 'jessie', 'dmitriyhomnekov@gmail.com', 'sfsdfsdf sd', '2016-05-26 19:52:02'),
+(2, 'jessie', 'deurefas@gmail.com', 'sdfds', '2016-05-31 19:37:42'),
+(3, 'jessie', 'deurefas@gmail.com', 'sdfsdfsd', '2016-05-31 19:44:21');
 
 -- --------------------------------------------------------
 
@@ -353,6 +355,27 @@ INSERT INTO `style` (`id`, `name`) VALUES
 (14, 'ultrices'),
 (15, 'elementum'),
 (16, 'Thriller');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `password` char(32) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `status`) VALUES
+(1, 'admin@mvc.com', '1d43a95f76d1da7b3c39597ecf00121e', 1),
+(2, 'qwerty@mvc.com', 'cd1356fb884979945ffaa9d8437d354c', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -393,6 +416,12 @@ ALTER TABLE `style`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -415,12 +444,17 @@ ALTER TABLE `book_author`
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `style`
 --
 ALTER TABLE `style`
   MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT для таблицы `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
