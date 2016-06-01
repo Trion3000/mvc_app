@@ -36,6 +36,11 @@ abstract class Router
         // вытаскиваем УРЛ без параметров
         $uri = $request->getURI();
 
+        // если видим, что урл админский
+        if (self::isAdminUri($uri)) {
+            Controller::setAdminLayout();
+        }
+
         // перебор элементов массива из routes.php для сопоставления с $uri
         foreach (self::$map as $route) {
 

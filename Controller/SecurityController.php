@@ -13,14 +13,14 @@ class SecurityController extends Controller
 
                 if ($user = $model->find($form->email, $password)) {
                     Session::set('user', $user['email']);
-                    Router::redirect('/');
+                    Router::redirect('/admin');
                 }
 
                 Session::setFlash('User not found');
                 Router::redirect('/index.php?route=security/login');
-            } else {
-                Session::setFlash('Fill the fields');
             }
+
+            Session::setFlash('Fill the fields');
         }
 
         return $this->render('login', array('form' => $form));
@@ -32,12 +32,5 @@ class SecurityController extends Controller
         Router::redirect('/');
     }
 
-    public function testAction(Request $request)
-    {
-        if (!Session::has('user')) {
-            Router::redirect('/');
-        }
 
-        echo 'secure';
-    }
 }
