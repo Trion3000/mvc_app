@@ -26,22 +26,17 @@ function __autoload($className)
 
 try {
     Session::start();
+
     Config::setFromXML('db.xml');
     Config::setFromXML('main.xml');
 
+    Router::init('routes.php');
+
     $request = new Request();
-    $route = $request->get('route'); // $_GET['route']
+    Router::match($request);
 
-    if (is_null($route)) {
-        $route = 'index/index';
-    }
-
-    // TODO: перебрати проблемні варіанти типу index/, /, blah-bah
-
-    $route = explode('/', $route);
-
-    $controller = ucfirst($route[0]) . 'Controller';
-    $action = $route[1] . 'Action';
+    $controller = Router::$controller;
+    $action = Router::$action;
 
     $controller = new $controller();
 
