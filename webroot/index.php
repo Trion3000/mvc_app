@@ -34,7 +34,7 @@ try {
 
     $request = new Request();
     Router::match($request);
-
+    //var_dump($_GET);
     $controller = Router::$controller;
     $action = Router::$action;
 
@@ -55,7 +55,9 @@ try {
     $content = Controller::renderError($e->getMessage(), $e->getCode());
 }
 
-require VIEW_DIR . Controller::$layout;
+echo $content;
+
+//require VIEW_DIR . Controller::$layout;
 
 
 echo '<hr><pre>';

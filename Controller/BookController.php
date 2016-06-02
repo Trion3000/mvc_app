@@ -20,6 +20,8 @@ class BookController extends Controller
         $bookModel = new BookModel();
         $book = $bookModel->find($id);
 
+        MetaHelper::addTitle($book['title']);
+
         $args = array(
             'book' => $book
         );

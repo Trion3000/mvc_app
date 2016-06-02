@@ -1,5 +1,13 @@
 <?php
 
+//  .*  --> 'a5f35v3', '5c ', '', '?dfs43sxzc', '$'
+//  [abc]+ --> 'acccbbb', 'abba', 'ababa'
+//  [a-zA-Z]? --> '', 'A', ..., 'Z', 'a', 'b', 'c', ... ,'z'
+//  [0-9a-zA-Z]{10,20}
+//  (093) 521-54-12   :     ^\(0[1-9]{2}\)\s([0-9]{3})-[0-9]{2}-[0-9]{2}$
+
+
+
 class SecurityController extends Controller
 {
     public function loginAction(Request $request)
@@ -17,7 +25,7 @@ class SecurityController extends Controller
                 }
 
                 Session::setFlash('User not found');
-                Router::redirect('/index.php?route=security/login');
+                Router::redirect('/login');
             }
 
             Session::setFlash('Fill the fields');

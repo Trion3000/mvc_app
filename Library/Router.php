@@ -55,7 +55,6 @@ abstract class Router
 
             // если нашли совпадение по регулярному выражению
             if (preg_match('@^' . $regex . '$@', $uri, $matches)) {
-
                 // выталкиваем первы елемент - не нужен. Тогда остается либо пустой массив, либо список из значений параметров
                 array_shift($matches);
 
@@ -86,5 +85,10 @@ abstract class Router
     {
         header('Location: ' . $to);
         die;
+    }
+
+    public static function getRouteUri($routeName, array $params = array())
+    {
+
     }
 }

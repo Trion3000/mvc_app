@@ -14,7 +14,6 @@ class AdminBookController extends Controller
             Router::redirect('/login');
         }
 
-
         $bookModel = new BookModel();
         $books = $bookModel->findAll();
 

@@ -9,6 +9,7 @@ return  array(
     'contact_us' => new Route('/contact-us', 'Index', 'contact'),
     'login' => new Route('/login', 'Security', 'login'),
     'logout' => new Route('/logout', 'Security', 'logout'),
+    // TODO: 'devionity_style' => new Route('/{_controller}/{_action}', ..., ..),
 
     // admin routes
     'admin_default' => new Route('/admin', 'AdminIndex', 'index'),

@@ -3,7 +3,7 @@
 
 class Request
 {
-    private $get;
+    public $get;
     private $post;
     private $server;
 
@@ -78,7 +78,7 @@ class Request
      */
     public function getURI()
     {
-        $uri = $this->server('REQUEST_URI');
+        $uri = $this->server('REQUEST_URI'); // $_SERVER['REQUEST_URI']
         $uri = explode('?', $uri);
         return $uri[0];
     }
