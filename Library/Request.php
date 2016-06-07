@@ -6,6 +6,7 @@ class Request
     public $get;
     private $post;
     private $server;
+    public $files;
 
 
     /**
@@ -16,6 +17,13 @@ class Request
         $this->get = $_GET;
         $this->post = $_POST;
         $this->server = $_SERVER;
+
+        $this->files = array();
+
+        foreach ($_FILES as $key => $file) {
+            $this->files[$key] = new UploadedFile($file);
+        }
+
     }
 
 
@@ -27,6 +35,12 @@ class Request
     {
         // if else ?
         return isset($this->post[$key]) ? $this->post[$key] : null;
+    }
+
+    public function files($key)
+    {
+        // if else ?
+        return isset($this->files[$key]) ? $this->files[$key] : null;
     }
 
 
@@ -92,6 +106,23 @@ class Request
         $this->get += $params;
         $_GET += $params;
     }
+
+//    public function reArrayFiles(&$file_post) {
+//
+//        $file_ary = array();
+//        $file_count = count($file_post['name']);
+//        $file_keys = array_keys($file_post);
+//
+//        for ($i=0; $i<$file_count; $i++) {
+//            foreach ($file_keys as $key) {
+//                $file_ary[$i][$key] = $file_post[$key][$i];
+//            }
+//        }
+//
+//        return $file_ary;
+//    }
+
+
 
 
 

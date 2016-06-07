@@ -8,6 +8,11 @@ class BookForm
     public $style;
 
     /**
+     * @var UploadedFile
+     */
+    public $attachment;
+
+    /**
      * ContactForm constructor.
      * @param Request $request
      */
@@ -17,6 +22,7 @@ class BookForm
         $this->price = $request->post('price');
         $this->description = $request->post('description');
         $this->style = $request->post('style');
+        $this->attachment = $request->files('document'); // $_FILES['document'];
     }
 
     /**
@@ -26,6 +32,8 @@ class BookForm
     function isValid()
     {
         $res = $this->title !== '' && $this->price !== '' && $this->description !== '';
+
+        //$res = $res && $this->attachment->isImage();
         return $res;
     }
 
