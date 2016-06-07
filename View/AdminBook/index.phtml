@@ -1,10 +1,11 @@
 <h1>Books</h1>
-
+<b><?=Session::getFlash()?></b>
 <table width="100%" border="1">
     <tr>
         <th>ID</th>
         <th>Title</th>
         <th>Price</th>
+        <th>Status</th>
         <th>Actions</th>
     </tr>
 
@@ -13,8 +14,9 @@
         <td><?=$book['id']?></td>
         <td><?=$book['title']?></td>
         <td><?=$book['price']?></td>
+        <td><?=$book['status']?></td>
         <td>
-            <a href="#">Edit</a>
+            <a href="/admin/books/edit/<?=$book['id']?>">Edit</a>
             <a href="#">Delete</a>
         </td>
     </tr>

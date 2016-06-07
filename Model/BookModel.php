@@ -11,7 +11,7 @@ class BookModel
     public function find($id)
     {
         $db = DbConnection::getInstance()->getPdo();
-        $sth = $db->prepare('SELECT * FROM book WHERE status = 1 AND id = :number');
+        $sth = $db->prepare('SELECT * FROM book WHERE id = :number');
         $sth->execute(array(
             'number' => $id
         ));
@@ -30,7 +30,7 @@ class BookModel
     {
         $db = DbConnection::getInstance()->getPdo();
         $sql = "
-            select b.title, b.id, b.price, group_concat(a.name) as authors
+            select b.title, b.id, b.price, b.status, group_concat(a.name) as authors
             from book b join  book_author ba on b.id = ba.book_id
             join author a on ba.author_id = a.id
             group by b.id
@@ -45,6 +45,23 @@ class BookModel
         }
 
         return $books;
+    }
+
+    public function update(array $book)
+    {
+        // TODO: check if array has keys 'title', 'price' etc.
+
+        $db = DbConnection::getInstance()->getPdo();
+        $sql = 'UPDATE book SET
+                title = :title,
+                price = :price,
+                description = :description,
+                style_id = :style_id,
+                status = :status
+
+                WHERE id = :id';
+        $s = $db->prepare($sql);
+        $s->execute($book);
     }
 
     public function count()

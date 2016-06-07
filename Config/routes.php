@@ -13,7 +13,12 @@ return  array(
 
     // admin routes
     'admin_default' => new Route('/admin', 'AdminIndex', 'index'),
-    'admin_books_list' => new Route('/admin/books', 'AdminBook', 'index')
+    'admin_books_list' => new Route('/admin/books', 'AdminBook', 'index'),
+    'admin_book_edit' => new Route('/admin/books/edit/{id}', 'AdminBook', 'edit', array('id' => '[0-9]+')),
+
+
+
+
 
 
 );
