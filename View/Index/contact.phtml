@@ -1,10 +1,30 @@
 <h1>Contact form</h1>
 
+<script>
+    function check() {
 
-<b><?=Session::getFlash()?></b>
-<form method="post">
-    Username: <input type="text" name="username" value="<?=$form->username?>"><br>
-    Email: <input type="email" name="email" value="<?=$form->email?>"><br>
-    <textarea name="message"><?=$form->message?></textarea>
-    <button>Go</button>
+        var name = document.getElementById('username');
+        var email = document.getElementById('email');
+        var message = document.getElementById('message');
+        var flash = document.getElementById('flash');
+
+        var res = name.value != '' && email.value != '' && message.value != '';
+
+        if (!res) {
+            flash.innerHTML = 'Fille the fields';
+        }
+
+        return res;
+    }
+</script>
+
+
+<b id="flash"><?=Session::getFlash()?></b>
+
+
+<form method="post" onsubmit="return check()">
+    Username: <input id='username'  class="form-control" type="text" name="username" value="<?=$form->username?>"><br>
+    Email: <input id='email' class="form-control" type="email" name="email" value="<?=$form->email?>"><br>
+    <textarea  id='message' class="form-control" name="message"><?=$form->message?></textarea><br>
+    <button class="btn btn-success">Go</button>
 </form>

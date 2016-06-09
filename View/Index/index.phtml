@@ -1,9 +1,56 @@
 <h1>Welcome</h1>
 
-<?=$number?> <br>
-<?=$name?>
+<script>
+    var a = 1;
+    function test() {
+        var a, b, c = 'hello';
+        var student = {
+            name: 'Mike',
+            age: 23,
+            city: 'Hamburg',
+            status: false,
 
-welcome
-welcome
-welcome
-welcome
+            study: function() {
+                console.log('Study php');
+            }
+        };
+
+        student.study();
+    }
+
+
+
+</script>
+
+<span onclick="this.style.display='none'"><?=$number?></span>
+
+
+
+<br>
+
+<a href="http://google.com" id="hello"><?=$name?></a>
+
+
+<br><br><br>
+
+
+<script>
+    var a = 1, b, c = 'hello';
+    var student = {
+        name: 'Mike',
+        age: 23,
+        city: 'Hamburg',
+        status: false,
+
+        study: function() {
+            console.log('Study php');
+        }
+    };
+
+
+    var elements = document.getElementsByTagName('div');
+    console.log(elements);
+   // console.log(element.);
+   // console.log(document);
+    // Number, String, Boolean, Array, Object
+</script>

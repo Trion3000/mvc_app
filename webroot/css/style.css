@@ -1,0 +1,15 @@
+* {
+    font-family: Arial;
+}
+
+/*div {*/
+    /*!*color: #ff2cc3;*!*/
+    /*padding: 10px 20px;*/
+    /*margin: 13px;*/
+/*}*/
+
+.container {
+    width: 600px;
+    border: 1px solid black;
+    margin: 0 auto;
+}

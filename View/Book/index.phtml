@@ -1,10 +1,24 @@
 <h1>Books</h1>
 
-<?php foreach ($books as $book): ?>
-    Title: <?=$book['title']?><br>
-    Author:<?=$book['authors']?> <br>
-    Price: <?=$book['price']?><br>
+<div class="row">
 
-    <a href="/book-<?=$book['id']?>.html">Details</a>
-    <hr>
+<?php foreach ($books as $book): ?>
+    <div class="book-item col-md-3 col-lg-2 col-sm-6 col-xs-12">
+        Title: <?=$book['title']?><br>
+        Author:<?=$book['authors']?> <br>
+        Price: <?=$book['price']?><br>
+
+        <a href="/book-<?=$book['id']?>.html">Details</a><hr>
+    </div>
 <?php endforeach; ?>
+
+</div>
+
+<script>
+    var elements = document.getElementsByTagName('div');
+    for (key in elements) {
+        elements[key].style.display = 'None';
+    }
+
+
+</script>
