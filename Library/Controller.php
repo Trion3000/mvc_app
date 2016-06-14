@@ -16,6 +16,7 @@ abstract class Controller
     protected function render($viewName, array $args = array())
     {
         extract($args);
+
         $tplDir = str_replace('Controller', '', get_class($this)); // Index
         $tplDir = trim($tplDir, '\\');
         $tplDir = str_replace('\\', DS, $tplDir);

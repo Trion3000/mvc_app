@@ -32,23 +32,42 @@
 
 
 <br><br><br>
+<button type="button">Ajax</button>
+<div id="test">
 
+</div>
 
 <script>
-    var a = 1, b, c = 'hello';
-    var student = {
-        name: 'Mike',
-        age: 23,
-        city: 'Hamburg',
-        status: false,
+    $('button').click(function(){
+//        $.get('/bla-bla-ajax?a=21&b=2', function(data) {
+//            var books = JSON.parse(data);
+//            for (key in books) {
+//                $('#test').append(books[key].title + '<br>');
+//            }
+//        });
 
-        study: function() {
-            console.log('Study php');
-        }
-    };
+        $.post('/post-ajax', {bla: 'new style'}, function(data) {
+            alert(data);
+        });
+
+    });
 
 
-    var elements = document.getElementsByTagName('div');
+
+//    var a = 1, b, c = 'hello';
+//    var student = {
+//        name: 'Mike',
+//        age: 23,
+//        city: 'Hamburg',
+//        status: false,
+//
+//        study: function() {
+//            console.log('Study php');
+//        }
+//    };
+//
+//
+//    var elements = document.getElementsByTagName('div');
     console.log(elements);
    // console.log(element.);
    // console.log(document);

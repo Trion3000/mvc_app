@@ -63,5 +63,5 @@ echo $content;
 //require VIEW_DIR . Controller::$layout;
 
 
-echo '<hr><pre>';
-var_dump($controller, $action);
+//echo '<hr><pre>';
+//var_dump($controller, $action);

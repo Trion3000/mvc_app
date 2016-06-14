@@ -11,6 +11,8 @@ return  array(
     'contact_us' => new Route('/contact-us', 'Index', 'contact'),
     'login' => new Route('/login', 'Security', 'login'),
     'logout' => new Route('/logout', 'Security', 'logout'),
+    'ajax_test' => new Route('/bla-bla-ajax', 'Index', 'ajax'),
+    'ajax_test2' => new Route('/post-ajax', 'Index', 'postAjax'),
     // TODO: 'devionity_style' => new Route('/{_controller}/{_action}', ..., ..),
 
     // admin routes

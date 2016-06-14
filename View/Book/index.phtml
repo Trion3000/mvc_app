@@ -11,6 +11,7 @@
 
             <a href="/book-<?=$book['id']?>.html">Details</a>
         </div>
+        <button type="button" class="btn btn-default">Test</button>
         <img src="/uploads/cat.jpg" alt="" class="img-responsive">
     </div>
 <?php endforeach; ?>
@@ -18,6 +19,10 @@
 </div>
 
 <script>
+    $('button').click(function() {
+        alert($(this).parent().children().first().html());
+    });
+
 //    var elements = document.getElementsByTagName('div');
 //    for (key in elements) {
 //        elements[key].style.display = 'None';

@@ -1,30 +1,57 @@
 <h1>Contact form</h1>
 
 <script>
-    function check() {
-
-        var name = document.getElementById('username');
-        var email = document.getElementById('email');
-        var message = document.getElementById('message');
-        var flash = document.getElementById('flash');
-
-        var res = name.value != '' && email.value != '' && message.value != '';
-
-        if (!res) {
-            flash.innerHTML = 'Fille the fields';
-        }
-
-        return res;
-    }
+//    function check() {
+//
+//        var name = document.getElementById('username');
+//        var email = document.getElementById('email');
+//        var message = document.getElementById('message');
+//        var flash = document.getElementById('flash');
+//
+//        var res = name.value != '' && email.value != '' && message.value != '';
+//
+//        if (!res) {
+//            flash.innerHTML = 'Fille the fields';
+//        }
+//
+//        return res;
+//    }
 </script>
 
 
 <b id="flash"><?=\Library\Session::getFlash()?></b>
 
 
-<form method="post" onsubmit="return check()">
+<form method="post">
     Username: <input id='username'  class="form-control" type="text" name="username" value="<?=$form->username?>"><br>
     Email: <input id='email' class="form-control" type="email" name="email" value="<?=$form->email?>"><br>
     <textarea  id='message' class="form-control" name="message"><?=$form->message?></textarea><br>
     <button class="btn btn-success">Go</button>
 </form>
+
+<script>
+    $('form').submit(function() {
+        var formData = $(this).serializeArray();
+        var postData = {};
+        console.log(formData);
+
+        var res = true;
+
+        for (key in formData) {
+            var obj = formData[key];
+            postData[obj.name] = obj.value;
+            res = res && obj.value != '';
+        }
+
+        if (!res) {
+            $('#flash').text('fill the filds');
+            return false;
+        }
+
+        $.post('/post-ajax', postData, function(data) {
+            $('form').fadeOut();
+        });
+
+        return false;
+    });
+</script>
