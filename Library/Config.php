@@ -1,7 +1,7 @@
 <?php
-/**
- * registry
- */
+
+namespace Library;
+
 abstract class Config
 {
     private static $elements = array();

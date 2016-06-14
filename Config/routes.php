@@ -1,5 +1,7 @@
 <?php
 
+use Library\Route;
+
 return  array(
 
     // site routes
@@ -12,9 +14,9 @@ return  array(
     // TODO: 'devionity_style' => new Route('/{_controller}/{_action}', ..., ..),
 
     // admin routes
-    'admin_default' => new Route('/admin', 'AdminIndex', 'index'),
-    'admin_books_list' => new Route('/admin/books', 'AdminBook', 'index'),
-    'admin_book_edit' => new Route('/admin/books/edit/{id}', 'AdminBook', 'edit', array('id' => '[0-9]+')),
+    'admin_default' => new Route('/admin', 'Admin\Index', 'index'),
+    'admin_books_list' => new Route('/admin/books', 'Admin\Book', 'index'),
+    'admin_book_edit' => new Route('/admin/books/edit/{id}', 'Admin\Book', 'edit', array('id' => '[0-9]+')),
 
 
 

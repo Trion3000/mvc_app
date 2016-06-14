@@ -1,11 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 17.05.2016
- * Time: 19:40
- */
+namespace Model;
+
+use Library\DbConnection;
+use Library\NotFoundException;
+
 class BookModel
 {
     public function find($id)
@@ -16,7 +15,7 @@ class BookModel
             'number' => $id
         ));
 
-        $books = $sth->fetch(PDO::FETCH_ASSOC);
+        $books = $sth->fetch(\PDO::FETCH_ASSOC);
 
         if (!$books) {
             throw new NotFoundException("Book #{$id} not found");
@@ -26,6 +25,10 @@ class BookModel
     }
 
 
+    /**
+     * @return mixed
+     * @throws NotFoundException
+     */
     public function findAll()
     {
         $db = DbConnection::getInstance()->getPdo();
@@ -38,7 +41,7 @@ class BookModel
         ";
        // $sth = $db->query('SELECT * FROM book WHERE status = 1 ORDER BY price DESC ');
         $sth = $db->query($sql);
-        $books = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $books = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
         if (!$books) {
             throw new NotFoundException('Books not found');

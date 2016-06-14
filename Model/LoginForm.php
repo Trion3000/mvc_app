@@ -1,5 +1,10 @@
 <?php
 
+namespace Model;
+
+
+use Library\Request;
+
 class LoginForm
 {
     public $email;

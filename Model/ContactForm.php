@@ -1,5 +1,11 @@
 <?php
 
+
+namespace Model;
+
+
+use Library\Request;
+
 class ContactForm
 {
     public $username;

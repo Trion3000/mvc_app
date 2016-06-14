@@ -1,6 +1,6 @@
 <?php
 
-// Singleton
+namespace Library;
 
 class DbConnection
 {
@@ -16,8 +16,8 @@ class DbConnection
         // like:  mysql: host=localhost; dbname=mvc1102
         $dsn = 'mysql: host=' . Config::get('host') . '; dbname='. Config::get('dbname');
 
-        $this->pdo = new PDO($dsn, Config::get('user'), Config::get('pass'));
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo = new \PDO($dsn, Config::get('user'), Config::get('pass'));
+        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
     private function __clone(){}

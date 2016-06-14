@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title><?=MetaHelper::getTitle();?></title>
+    <title><?=\Library\MetaHelper::getTitle();?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/books">Books</a></li>
                 <li><a href="/contact-us">Contact</a></li>
-                <?php if (!Session::has('user')) : ?>
+                <?php if (!\Library\Session::has('user')) : ?>
                     <li><a href="/login">Login</a></li>
                 <?php else: ?>
                     <li><a href="/logout">Logout</a></li>

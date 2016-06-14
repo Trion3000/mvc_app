@@ -1,5 +1,10 @@
 <?php
 
+namespace Model;
+
+
+use Library\DbConnection;
+
 class FeedBackModel
 {
     public function save(array $feedback)

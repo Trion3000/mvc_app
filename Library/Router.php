@@ -1,5 +1,6 @@
 <?php
 
+namespace Library;
 
 abstract class Router
 {
@@ -65,7 +66,7 @@ abstract class Router
                 }
 
                 // допиливаем названия контроллера и действия
-                self::$controller = $route->controller . 'Controller';
+                self::$controller = 'Controller\\' . $route->controller . 'Controller';
                 self::$action = $route->action . 'Action';
                 break;
             }
@@ -73,7 +74,7 @@ abstract class Router
 
         // если не опеределен контроллер то исключение
         if (is_null(self::$controller) || is_null(self::$action)) {
-            throw new Exception('Route not found: ' . $uri, 404);
+            throw new \Exception('Route not found: ' . $uri, 404);
         }
     }
 

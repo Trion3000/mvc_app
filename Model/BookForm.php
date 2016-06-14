@@ -1,5 +1,10 @@
 <?php
 
+namespace Model;
+
+use Library\Request;
+use Library\UploadedFile;
+
 class BookForm
 {
     public $title;

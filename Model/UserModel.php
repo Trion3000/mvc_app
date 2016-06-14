@@ -1,10 +1,8 @@
 <?php
 
-// email: blabla
-// password: blb' or 1 --
+namespace Model;
 
-// select * from user where email='blabla' and password='blb' or 1 -- ';
-
+use Library\DbConnection;
 
 class UserModel
 {
@@ -17,7 +15,7 @@ class UserModel
             'password' => $password,
         ));
 
-        $user = $sth->fetch(PDO::FETCH_ASSOC);
+        $user = $sth->fetch(\PDO::FETCH_ASSOC);
 
         return $user;
     }

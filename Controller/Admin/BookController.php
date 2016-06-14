@@ -1,12 +1,16 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: henry
- * Date: 01.06.16
- * Time: 10:57
- */
-class AdminBookController extends Controller
+namespace Controller\Admin;
+
+use Library\Controller;
+use Library\Request;
+use Library\Router;
+use Library\Session;
+use Model\BookForm;
+use Model\BookModel;
+use Model\StyleModel;
+
+class BookController extends Controller
 {
     public function indexAction(Request $request)
     {

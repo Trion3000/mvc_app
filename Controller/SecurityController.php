@@ -1,15 +1,22 @@
 <?php
 
-//  .*  --> 'a5f35v3', '5c ', '', '?dfs43sxzc', '$'
-//  [abc]+ --> 'acccbbb', 'abba', 'ababa'
-//  [a-zA-Z]? --> '', 'A', ..., 'Z', 'a', 'b', 'c', ... ,'z'
-//  [0-9a-zA-Z]{10,20}
-//  (093) 521-54-12   :     ^\(0[1-9]{2}\)\s([0-9]{3})-[0-9]{2}-[0-9]{2}$
+namespace Controller;
 
-
+use Library\Controller;
+use Library\Password;
+use Library\Request;
+use Library\Router;
+use Library\Session;
+use Model\LoginForm;
+use Model\UserModel;
 
 class SecurityController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return string
+     * @throws \Library\Exception
+     */
     public function loginAction(Request $request)
     {
         $form = new LoginForm($request);

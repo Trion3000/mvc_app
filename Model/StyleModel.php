@@ -1,11 +1,10 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 17.05.2016
- * Time: 19:40
- */
+namespace Model;
+
+use Library\DbConnection;
+use Library\NotFoundException;
+
 class StyleModel
 {
 
@@ -14,7 +13,7 @@ class StyleModel
         $db = DbConnection::getInstance()->getPdo();
 
         $sth = $db->query("select * from style order by name");
-        $styles = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $styles = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
         if (!$styles) {
             throw new NotFoundException('Styles not found');

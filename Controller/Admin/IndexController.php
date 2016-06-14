@@ -1,6 +1,13 @@
 <?php
 
-class AdminIndexController extends Controller
+namespace Controller\Admin;
+
+use Library\Controller;
+use Library\Request;
+use Library\Router;
+use Library\Session;
+
+class IndexController extends Controller
 {
     public function indexAction(Request $request)
     {

@@ -1,11 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PHP acedemy
- * Date: 07.06.2016
- * Time: 20:34
- */
+namespace Library;
+
 class UploadedFile
 {
     const MAX_SIZE = 500000;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Library;
+
 abstract class Cookie
 {
     public static function set($key, $value, $time = 31536000)
